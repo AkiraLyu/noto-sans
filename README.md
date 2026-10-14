@@ -38,6 +38,8 @@ paru --sudo run0 -S noto-sans-akira
 
 包默认启用 Fontconfig 配置，统一 `sans-serif`、`system-ui` 和符号回退。配置文件安装到 `/usr/share/fontconfig/conf.avail/61-noto-sans-akira.conf`，默认链接由 Arch Linux 的 Fontconfig 安装钩子同步到 `/etc/fonts/conf.d/`。安装或升级后重启浏览器。
 
+配置保留应用显式指定的字体及等宽字体选择。已有用户配置若为 `sans-serif` 或 `system-ui` 强制指定其他字体，应移除这些重复默认规则，由字体包统一提供默认回退。
+
 ### 手动安装
 
 在解压后的目录中运行：
