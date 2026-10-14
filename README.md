@@ -36,13 +36,7 @@ paru --sudo run0 -S noto-sans-akira
 
 包安装六个默认字重，并依赖 Noto Sans、Noto Sans CJK SC 和 Noto Color Emoji 所在的包。DemiLight 保存在 `/usr/share/noto-sans-akira/optional/`，不会参与系统字体匹配。
 
-Fontconfig 配置安装到 `/usr/share/fontconfig/conf.avail/61-noto-sans-akira.conf`，默认不启用。需要统一 `sans-serif`、`system-ui` 和符号回退时，为当前用户启用：
-
-```bash
-mkdir -p "$HOME/.config/fontconfig/conf.d"
-ln -s /usr/share/fontconfig/conf.avail/61-noto-sans-akira.conf \
-  "$HOME/.config/fontconfig/conf.d/61-noto-sans-akira.conf"
-```
+包默认启用 Fontconfig 配置，统一 `sans-serif`、`system-ui` 和符号回退。配置文件安装到 `/usr/share/fontconfig/conf.avail/61-noto-sans-akira.conf`，默认链接由 Arch Linux 的 Fontconfig 安装钩子同步到 `/etc/fonts/conf.d/`。安装或升级后重启浏览器。
 
 ### 手动安装
 
@@ -56,7 +50,7 @@ fc-cache -f "$HOME/.local/share/fonts/NotoSansAkira"
 
 将 KDE 和 GTK 的界面字体设置为 `Noto Sans Akira`。字体名称只替换西文部分；中文字符使用字体回退。
 
-可选的 Fontconfig 配置将 `sans-serif` 和 `system-ui` 的首选字体设置为 Noto Sans Akira，并补充字符回退。此配置不修改等宽字体。部署配置后重启浏览器：
+Fontconfig 配置将 `sans-serif` 和 `system-ui` 的首选字体设置为 Noto Sans Akira，并补充字符回退。此配置不修改等宽字体。手动安装字体时，可按以下命令部署配置，然后重启浏览器：
 
 ```bash
 mkdir -p "$HOME/.config/fontconfig/conf.d"
